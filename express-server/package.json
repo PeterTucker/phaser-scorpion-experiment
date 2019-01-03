@@ -1,0 +1,34 @@
+{
+    "name": "Docker-ES6-Mongoose-Express-Nodejs-Boilerplate",
+    "version": "1.0.0",
+    "description": "A quick docker boilerplate to start an ES6 Nodejs project.",
+    "main": "index.mjs",
+    "repository": "https://github.com/PeterTucker/Docker-ES6-Mongoose-Express-Nodejs-Boilerplate",
+    "scripts": {
+        "installSASS": "npm install node-sass",
+        "start": "nodemon -L --exec  \"npm run build-css-and-run-app\" -e html,ejs,mjs,js,scss ",
+        "build-css-and-run-app": "node-sass -i sass -o  public/css && node --experimental-modules app.mjs"
+    },
+    "comments": {
+        "installSASS": "npm install node-sass --sass-binary-name=linux-x64-67"
+    },
+    "author": "Peter Tucker <peter@gomvdesigns.com>",
+    "license": "MIT",
+    "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+    "devDependencies": {},
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "colors": "^1.3.2",
+        "cors": "2.8.4",
+        "ejs": "2.6.1",
+        "express": "^4.15.3",
+        "mongoose": "^5.0.0",
+        "morgan": "^1.9.0",
+        "node-sass": "^4.11.0",
+        "passport": "0.4.0",
+        "passport-local": "1.0.0"
+    },
+    "commonLibraries": {
+        "redis": "^1.0.0"
+    }
+}

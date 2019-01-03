@@ -1,0 +1,33 @@
+version: '3.2'
+services: 
+  boilerplate-express-server:
+    build: ./express-server
+    command: >
+      bash -c " npm run installSASS && #This line is needed to build SASS. See corresponding script line in package.json.
+                npm run start"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./express-server:/opt/app
+      - /opt/app/node_modules # weird line. creates an empty node_module but allows the project to work.
+      # http://dchua.com/2016/02/07/getting-npm-packages-to-be-installed-with-docker-compose/
+    ports:
+      - "${EXPRESS_SERVER_PORT}:${EXPRESS_SERVER_PORT}" #host:container
+    links:
+      - boilerplate-mongodb
+    depends_on:
+      - boilerplate-mongodb
+    env_file:
+     - ./.env
+
+  boilerplate-mongodb:
+    image: mongo:latest
+    container_name: "boilerplate-mongodb"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    # volumes:
+    #   - ./data/db:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
