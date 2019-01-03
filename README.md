@@ -1,5 +1,5 @@
-# Docker ES6 Mongoose Express Nodejs Boilerplate
-A quick docker boilerplate to start an ES6 Nodejs project.
+# Phaser Example: Scorpion hooking soccer ball.
+
 
 ## Docker Nodejs Quickstart
 docker-compose build
